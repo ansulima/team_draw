@@ -15,16 +15,12 @@ export const shuffleArray = <T>(array: T[]): T[] => {
 /**
  * Creates teams with exactly 4 players each and returns remaining players
  */
-export const createTeams = (players: Player[]): TeamResult => {
+export const createTeams = (players: Player[], playersPerTeam: number): TeamResult => {
   const shuffledPlayers = shuffleArray(players);
-  const playersPerTeam = 4;
   const teams: Team[] = [];
-  
-  // Calculate how many complete teams we can form
   const numberOfCompleteTeams = Math.floor(shuffledPlayers.length / playersPerTeam);
-  
-  // Create complete teams
-  for (let i = 0; i < numberOfCompleteTeams && i < 3; i++) {
+
+  for (let i = 0; i < numberOfCompleteTeams; i++) {
     const startIndex = i * playersPerTeam;
     teams.push({
       id: i + 1,
@@ -34,10 +30,9 @@ export const createTeams = (players: Player[]): TeamResult => {
     });
   }
 
-  // Get remaining players
   const assignedPlayers = teams.length * playersPerTeam;
   const remainingPlayers = shuffledPlayers.slice(assignedPlayers);
-  
+
   return { teams, remainingPlayers };
 };
 
@@ -45,8 +40,17 @@ export const createTeams = (players: Player[]): TeamResult => {
  * Gets the color for a team based on its index
  */
 const getTeamColor = (index: number): string => {
-  const colors = ['bg-blue-500', 'bg-green-500', 'bg-orange-500'];
-  return colors[index] || colors[0];
+  const colors = [
+    'bg-blue-500',
+    'bg-green-500',
+    'bg-orange-500',
+    'bg-red-500',
+    'bg-purple-500',
+    'bg-yellow-500',
+    'bg-pink-500',
+    'bg-teal-500'
+  ];
+  return colors[index % colors.length];
 };
 
 /**

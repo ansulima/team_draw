@@ -3,11 +3,11 @@ import { Users } from 'lucide-react';
 
 const Header: React.FC = () => {
   return (
-    <header className="w-full bg-gradient-to-r from-blue-600 to-blue-800 py-6 px-4">
+    <header className="w-full bg-gradient-to-r from-gray-900 to-black py-6 px-4">
       <div className="max-w-5xl mx-auto flex items-center justify-center">
         <div className="flex items-center">
           <Users size={32} className="text-white mr-3" />
-          <h1 className="text-3xl md:text-4xl font-bold text-white">Sorteador de Times</h1>
+          <h1 className="text-3xl md:text-4xl font-bold text-white">Sorteador de Times Rebourn</h1>
         </div>
       </div>
     </header>
